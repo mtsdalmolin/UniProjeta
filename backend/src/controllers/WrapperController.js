@@ -168,7 +168,7 @@ module.exports = {
 			orgs = await getXLSX_IES(path);
 			// colocar a parte das despesas...
 			ret = await getExpenses(orgs, ret);
-			console.log(ret);
+			console.log(ret);	
 		}
 
 		console.log('escrevendo no arquivo');

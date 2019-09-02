@@ -4,10 +4,9 @@ const OrgController = require('./controllers/OrgController');
 
 const routes = express.Router();
 
-// routes.post('/orgs', OrgController.store);
+routes.post('/orgs', OrgController.index);
 
 routes.get('/wrapper', WrapperController.index);
-
 routes.post('/saveWrapper', WrapperController.store);
 
 module.exports = routes;
