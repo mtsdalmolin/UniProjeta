@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './index.css'
-import Header from './header.js'
+import Header from './Header/header'
 import Nav from './nav.js'
+import { Link } from "react-router-dom";
+
 
 export default class Main extends Component {
   render() {
@@ -13,7 +15,7 @@ export default class Main extends Component {
                 <Nav />
                 <div className="list">
                     <div className="num">
-                       <h3>UFSM - Universidade Federal de Santa Maria</h3>
+                       <h3> <Link to="/about/45" >UFSM - Universidade Federal de Santa Maria</Link></h3>
                     </div>
                     <div className="num">
                         <h3>UFSC - Universidade Federal de Santa Catarina</h3>
