@@ -2,14 +2,8 @@ const Org = require('../models/Org');
 
 module.exports = {
 	async index(req, res) {
-		// const body = req.body;
+		orgs = await Org.find().sort({ name: 1});
 
-		// const { user } = req.headers;
-
-		console.log(await Org.find());
-
-		console.log(req, res);
-
-		return res.json(response.data);
+		return res.json(orgs);
 	}
 }
