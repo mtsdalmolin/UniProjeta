@@ -1,6 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
 import './Main.css';
 import Header from './Header.js';
+import Nav from './Nav.js'
+import { Link } from "react-router-dom";
 
 import api from '../services/api';
 
@@ -25,12 +27,7 @@ export default class Main extends Component {
                 <Header />
                 <div className="container">
                     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-KwxQKNj2D0XKEW5O/Y6haRH39PE/xry8SAoLbpbCMraqlX7kUP6KHOnrlrtvuJLR" crossorigin="anonymous"/>
-                    <div className="nav">
-                            <a href="https://github.com/UniProjeta" target="_blank"><i className="fab fa-github"></i></a>
-                            <div class="input-group">
-                                <input class="search" type="text" placeholder="Digite o nome da Universidade"/><span class="bar"></span>
-                            </div>
-                    </div>
+                    <Nav />
                     <div className="list">
                         <div className="num">
                             <h3>UFSM - Universidade Federal de Santa Maria</h3>
