@@ -1,7 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
 import './Main.css';
-import Header from './Header.js';
-import Nav from './Nav.js'
 import { Link } from "react-router-dom";
 
 import api from '../services/api';
