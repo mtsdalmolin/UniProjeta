@@ -1,11 +1,9 @@
-const axios = require('axios');
+const Org = require('../models/Org');
 
 module.exports = {
-	async store(req, res) {
-		const body = req.body;
+	async index(req, res) {
+		orgs = await Org.find().sort({ name: 1});
 
-		const response = await axios.get(`http://www.transparencia.gov.br/api-de-dados/despesas/por-orgao?ano=2017&orgaoSuperior=26000&pagina=1`);
-
-		return res.json(response.data);
+		return res.json(orgs);
 	}
 }
