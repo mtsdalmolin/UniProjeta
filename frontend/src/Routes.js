@@ -12,9 +12,12 @@ function AppRouter() {
     <Router>
       <div>
         < Header />
-        < Nav />
+        < Nav >
         <Route path="/" exact component={Index} />
         <Route path="/Universidade/:id"component={Universidade} />
+
+        </ Nav>
+
       </div>
     </Router>
   );

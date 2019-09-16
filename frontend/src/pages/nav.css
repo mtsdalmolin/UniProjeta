@@ -162,3 +162,129 @@
   .container .list .num:hover h3 {
     left: 1rem;
   }
+
+  @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+html {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+html body {
+  margin: 0;
+  background: #204c90;
+  background: linear-gradient(to bottom, #204c90, #2272eb);
+  font-family: 'Raleway', sans-serif;
+}
+
+.heading h1 {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  position: relative;
+}
+.heading h1:after {
+  content: '';
+  height: 2px;
+  width: 2rem;
+  position: absolute;
+  left: 50%;
+  bottom: -1rem;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #fff;
+}
+
+
+.message {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+/* BUSCA*/
+
+
+
+
+
+.input-group {
+  position: relative;
+}
+.input-group .search {
+  height: 27px ;
+  width: 27px;
+  background-color: #204c90;
+  border: 0;
+  border-radius: 60%;
+  cursor: pointer;
+  color: #204c90;
+  margin-left: 200px;
+  outline: none;
+  padding: 15px;
+  bottom: 15px;
+  position: relative;
+  transition: all 450ms cubic-bezier(0.2, 0.6, 0.4, 1.2);
+  top: 1px;
+  margin-top: -10px !important; 
+}
+.input-group .search ~ .bar {
+  height: 4px;
+  width: 15px;
+  background: #204c90;
+  border-radius: 6px;
+  position: absolute;
+  display: block;
+  opacity: 1;
+  right: -9px;
+  
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  transition: opacity 150ms ease;
+}
+.input-group .search::-webkit-input-placeholder {
+  color: #204c90;
+}
+.input-group .search:-ms-input-placeholder {
+  color: #204c90;
+}
+.input-group .search::-ms-input-placeholder {
+  color: #204c90;
+}
+.input-group .search::placeholder {
+  color: #204c90;
+}
+.input-group .search:focus {
+  height: 25px;
+  width: 300px;
+  border-radius: 3px;
+  color: #fff;
+  cursor: initial;
+}
+.input-group .search:focus::-webkit-input-placeholder {
+  font-weight: bold;
+  color: #b8bac5;
+}
+.input-group .search:focus:-ms-input-placeholder {
+  font-weight: bold;
+  color: #b8bac5;
+}
+.input-group .search:focus::-ms-input-placeholder {
+  font-weight: bold;
+  color: #b8bac5;
+}
+.input-group .search:focus::placeholder {
+  font-weight: bold;
+  color: #b8bac5;
+}
+.input-group .search:focus ~ .bar {
+  opacity: 1;
+  right: 0;
+  top: 5px;
+}
+
+
+
+

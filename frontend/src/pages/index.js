@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './index.css'
-import Header from './Header/header'
-import Nav from './nav.js'
 import { Link } from "react-router-dom";
 
 

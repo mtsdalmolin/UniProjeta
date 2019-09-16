@@ -12,6 +12,7 @@ export default class Nav extends Component {
               <input class="search" type="text" placeholder="Digite o nome da Universidade"/><span class="bar"></span>
             </div> 
         </div>
+        <div>{this.props.children}</div>
       </div>
     );
   }
