@@ -48,122 +48,7 @@
     opacity: 1;
   }
 
-  .container .list .num {
-    padding: 0.5rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(0):before {
-    content: '0';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(1):before {
-    content: '1';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(2):before {
-    content: '2';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(3):before {
-    content: '3';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(4):before {
-    content: '4';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(5):before {
-    content: '5';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(6):before {
-    content: '6';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(7):before {
-    content: '7';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(8):before {
-    content: '8';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num:nth-child(9):before {
-    content: '9';
-    font-size: 4rem;
-    font-weight: bold;
-    color: #000;
-    width: 2rem;
-    opacity: 0.05;
-    transition: 0.25s;
-  }
-  .container .list .num h3 {
-    position: relative;
-    left: -1.5rem;
-    color: #3d3d3d;
-    font-size: 1.5rem;
-    transition: 0.25s;
-  }
-  .container .list .num:hover {
-    background-color: #cecfd3;
-    cursor: pointer;
-  }
-  .container .list .num:hover:before {
-    opacity: 0.2;
-  }
-  .container .list .num:hover h3 {
-    left: 1rem;
-  }
-
-  @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 html {
   display: flex;
@@ -175,7 +60,7 @@ html {
 html body {
   margin: 0;
   background: #204c90;
-  background: linear-gradient(to bottom, #204c90, #2272eb);
+  /*background: linear-gradient(to bottom, #204c90, #2272eb);*/
   font-family: 'Raleway', sans-serif;
 }
 
@@ -205,10 +90,6 @@ html body {
 }
 
 /* BUSCA*/
-
-
-
-
 
 .input-group {
   position: relative;
@@ -284,7 +165,3 @@ html body {
   right: 0;
   top: 5px;
 }
-
-
-
-
