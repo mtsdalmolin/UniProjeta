@@ -5,7 +5,7 @@ import Header from './Header';
 import Nav from './Nav';
 import List from './List';
 
-export default function Main ({ children }) {
+export default function Main ({ history }) {
   return(
     <div>
       <div className="heading">
@@ -13,7 +13,7 @@ export default function Main ({ children }) {
       </div>
       <div className="container">
         <Nav />
-        <List />
+        <List history={history}/>
       </div>
     </div>
   );

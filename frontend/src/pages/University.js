@@ -19,7 +19,7 @@ export default function University ({ match }) {
         // 	expenses = response.data[keyName];
       });
 
-      // pops para retirar timestamps e __v do array
+      // pops to remove timestamps and __v from the array
       universityInfo.pop();
       universityInfo.pop();
       universityInfo.pop();
