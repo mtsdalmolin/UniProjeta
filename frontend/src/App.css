@@ -26,3 +26,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+html {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+html body {
+  margin: 0;
+  background: #204c90;
+  /*background: linear-gradient(to bottom, #204c90, #2272eb);*/
+  font-family: 'Raleway', sans-serif;
+}

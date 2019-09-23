@@ -15,7 +15,7 @@ export default function List ({ history }) {
       const response = await api.get('/orgs');
       setOrgs(response.data.map( org => {
         return (
-          <div className="num" id={org._id} onClick={() => handleClick(org._id)}>
+          <div className="num" onClick={() => handleClick(org._id)}>
               <h3>{org.name}</h3>
           </div>)
       }));
@@ -25,7 +25,6 @@ export default function List ({ history }) {
 
   return(
       <div>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-KwxQKNj2D0XKEW5O/Y6haRH39PE/xry8SAoLbpbCMraqlX7kUP6KHOnrlrtvuJLR" crossorigin="anonymous"/>
         <div className="list">
           {orgs}
         </div>

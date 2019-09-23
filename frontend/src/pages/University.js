@@ -20,10 +20,11 @@ export default function University ({ match }) {
       });
 
       // pops to remove timestamps and __v from the array
+      // usar .remove(`aosidjasoidj`)
       universityInfo.pop();
       universityInfo.pop();
       universityInfo.pop();
-      console.log(universityInfo);
+      // console.log(universityInfo);
 
       setUniversity(universityInfo.map(elementInfo => {
         return (
