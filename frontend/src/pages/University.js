@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import api from '../services/api';
+import Header from './Header';
 
 export default function University ({ match }) {
   const [university, setUniversity] = useState();
@@ -38,7 +39,12 @@ export default function University ({ match }) {
 
   return (
     <div>
-      {university}
+      <div className="heading">
+        <Header />
+      </div>
+      <div className="container">
+        {university}
+      </div>
     </div>
   );
 }
