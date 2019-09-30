@@ -191,15 +191,7 @@ module.exports = {
 					data: orgs[org].data,
 				});
 				console.log(`Done inserting ${ret.initials}!`);
-				process.exit();
-				// await Org.find({}, (err, docs) => {
-				// 	if (err)
-				// 		throw err;
-				// 	else {
-				// 		console.log(docs);
-				// 		process.exit();
-				// 	}
-				// });
+				
 			} catch(e) {
 				console.log(e);
 				process.exit();
