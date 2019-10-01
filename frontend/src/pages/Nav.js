@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Nav.css';
 
-export default function Nav ({children}) {
+export default function Nav () {
   return(
     <div className="nav">
       <a href="https://github.com/mtsdalmolin/UniProjeta" rel="noopener" ><i className="fab fa-github"></i></a>

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import Collapsible from 'react-collapsible';
+
+import Header from './Header';
+import './University.css';
 
 import api from '../services/api';
-import Header from './Header';
 
 export default function University ({ match }) {
   const [university, setUniversity] = useState();
@@ -9,32 +12,10 @@ export default function University ({ match }) {
   useEffect(() => {
     async function loadUniversity() {
       const response = await api.get(`/orgs/${match.params.id}`);
-
-      let universityInfo = [];
-      Object.keys(response.data).map( (keyName, value) => {
-        // console.log(typeof(response.data[keyName]));
-        if (typeof(response.data[keyName]) === 'object')
-	        universityInfo.push(response.data[keyName][0]._id);
-	      else
-	      	universityInfo.push(response.data[keyName]);
-        // 	expenses = response.data[keyName];
-      });
-
-      // pops to remove timestamps and __v from the array
-      // usar .remove(`aosidjasoidj`)
-      universityInfo.pop();
-      universityInfo.pop();
-      universityInfo.pop();
-      // console.log(universityInfo);
-
-      setUniversity(universityInfo.map(elementInfo => {
-        return (
-          <h1>{elementInfo}</h1>
-        );
-      }));
+      setUniversity(JSON.stringify(response.data));
     }
 
-    loadUniversity();    
+    loadUniversity();
   }, [match.params.id]);
 
   return (
@@ -43,7 +24,33 @@ export default function University ({ match }) {
         <Header />
       </div>
       <div className="container">
-        {university}
+        <div>
+          { university ? 
+            <div>
+              <h1>{JSON.parse(university).name}</h1>
+              <h1>{JSON.parse(university).initials}</h1>
+              <h1>{JSON.parse(university).SIAFI}</h1>
+              <h1>{JSON.parse(university).state}</h1>
+              {JSON.parse(university).data.map( info => (
+                <Collapsible trigger={info.year}>
+                  <p>
+                    <h3>Despesas:</h3>
+                    <ul>
+                      <li>Empenhado: {info.expenses.committed}</li>
+                      <li>Liquidado: {info.expenses.settled}</li>
+                      <li>Pago: {info.expenses.paid}</li>
+                    </ul>
+                    <h3>IGC:</h3>
+                    <ul>
+                      <li>Continuo: {info.igc_cont_value}</li>
+                      <li>Discreto: {info.igc_value}</li>
+                    </ul>
+                  </p>
+                </Collapsible>
+              ))}
+            </div>
+          : ''}
+        </div>
       </div>
     </div>
   );

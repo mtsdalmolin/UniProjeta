@@ -1,0 +1,33 @@
+.Collapsible {
+  background-color: #204d90;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 18px;
+  width: 800px;
+  height: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.active, .Collapsible:hover {
+  background-color: #204c90;
+  color: #fff;
+}
+
+.content {
+  display: none;
+  overflow: hidden;
+  color: #fff;
+  font-size: 15px;
+  width: 780px;
+  height: 100%;
+  background-color: #204c90;
+  border-width: 3px;
+  border-style: dashed; 
+  border-color: #fff; 
+  padding: 8px;
+}
