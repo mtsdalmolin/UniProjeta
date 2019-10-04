@@ -1,33 +1,56 @@
 .Collapsible {
   background-color: #204d90;
-  color: #000;
-  cursor: pointer;
+  color: #eef;
   font-weight: bold;
   padding: 18px;
-  width: 800px;
+  width: 100%;
   height: 100%;
   border: none;
   text-align: center;
-  outline: none;
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
 }
 
-.active, .Collapsible:hover {
-  background-color: #204c90;
-  color: #fff;
+.Collapsible__trigger.is-open:hover,
+.Collapsible__trigger.is-closed:hover{
+  cursor: pointer;
+}
+
+.Collapsible__contentOuter {
+	margin-top: 15px;
+}
+
+.info {
+	padding: 15px;
+	display: block;
+}
+
+.money:before {
+	content: 'R$ ';
+}
+
+.info-label {
+	padding: 15px;
+}
+
+.expenses-div,
+.igc-div {
+	width: 50%;
+	border-left: 6px solid #204d90;
+	background-color: #eef;
+	padding: 10px;
+	margin: 5px;
 }
 
 .content {
-  display: none;
-  overflow: hidden;
+	text-align: left;
   color: #fff;
-  font-size: 15px;
-  width: 780px;
+  font-size: 25px;
+  width: 100%;
   height: 100%;
-  background-color: #204c90;
-  border-width: 3px;
-  border-style: dashed; 
-  border-color: #fff; 
+  background-color: #fff;
+  border-width: 2px;
   padding: 8px;
+  color: #000;
+  display: inline-flex;
 }

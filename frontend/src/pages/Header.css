@@ -12,6 +12,7 @@
 
 .heading h1:after {
   content: '';
+  cursor: auto;
   height: 2px;
   width: 2rem;
   position: absolute;

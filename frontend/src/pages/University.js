@@ -18,6 +18,11 @@ export default function University ({ match }) {
     loadUniversity();
   }, [match.params.id]);
 
+  function applyExpenseMask(number) {
+    number = number.replace('.', ',');
+    return number.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
   return (
     <div>
       <div className="heading">
@@ -31,25 +36,40 @@ export default function University ({ match }) {
               <h1>{JSON.parse(university).initials}</h1>
               <h1>{JSON.parse(university).SIAFI}</h1>
               <h1>{JSON.parse(university).state}</h1>
-              {JSON.parse(university).data.map( info => (
+              { JSON.parse(university).data.map( info => (
                 <Collapsible trigger={info.year}>
-                  <p>
-                    <h3>Despesas:</h3>
-                    <ul>
-                      <li>Empenhado: {info.expenses.committed}</li>
-                      <li>Liquidado: {info.expenses.settled}</li>
-                      <li>Pago: {info.expenses.paid}</li>
-                    </ul>
-                    <h3>IGC:</h3>
-                    <ul>
-                      <li>Continuo: {info.igc_cont_value}</li>
-                      <li>Discreto: {info.igc_value}</li>
-                    </ul>
-                  </p>
+                  <div className="content">
+                    <div className="expenses-div">
+                      <span>Despesas</span>
+                      <div className="info">
+                        <span className="info-label">Empenhado:</span>
+                        <span className="info-value money">{applyExpenseMask(info.expenses.committed.toString())}</span>
+                      </div>
+                      <div className="info">
+                        <span className="info-label">Liquidado:</span>
+                        <span className="info-value money">{applyExpenseMask(info.expenses.settled.toString())}</span>
+                      </div>
+                      <div className="info">
+                        <span className="info-label">Pago:</span>
+                        <span className="info-value money">{applyExpenseMask(info.expenses.paid.toString())}</span>
+                      </div>
+                    </div>
+                    <div className="igc-div">
+                      <span>IGC</span>
+                      <div className="info">
+                        <span className="info-label">Contínuo:</span>
+                        <span className="info-value">{info.igc_cont_value.toString().replace('.', ',')}</span>
+                      </div>
+                      <div className="info">
+                        <span className="info-label">Discreto:</span>
+                        <span className="info-value">{info.igc_value}</span>
+                      </div>
+                    </div>
+                  </div>
                 </Collapsible>
-              ))}
+              )) }
             </div>
-          : ''}
+          : '' }
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import api from '../services/api';
 
 export default function List ({ history }) {
-  // const orgId = match.params.id;
   const [orgs, setOrgs] = useState();
 
   function handleClick(orgId) {

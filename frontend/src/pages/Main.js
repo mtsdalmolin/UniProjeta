@@ -13,7 +13,7 @@ export default function Main ({ history }) {
       </div>
       <div className="container">
         <Nav />
-        <List history={history}/>
+        <List history={history} />
       </div>
     </div>
   );
