@@ -9,7 +9,7 @@ routes.get('/wrapper', WrapperController.index);
 routes.get('/saveWrapper', WrapperController.store);
 
 routes.get('/orgs', OrgController.index);
-routes.get('/orgs/:universityId', UniversityController.index);
-routes.get('/orgs/getByName/:name', OrgController.get);
+routes.get('/orgs/:universityId/dashboard', UniversityController.index);
+// routes.get('/orgs/getByName/:name', OrgController.get);
 
 module.exports = routes;

@@ -11,13 +11,12 @@ export default function University ({ match }) {
 
   useEffect(() => {
     async function loadUniversity() {
-      const response = await api.get(`/orgs/${match.params.id}`);
+      const response = await api.get(`/orgs/${match.params.id}/dashboard`);
       setUniversity(JSON.stringify(response.data));
     }
 
     loadUniversity();
   }, [match.params.id]);
-
   function applyExpenseMask(number) {
     number = number.replace('.', ',');
     return number.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
