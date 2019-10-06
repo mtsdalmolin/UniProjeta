@@ -32,10 +32,10 @@ export default function University ({ match }) {
         <div>
           { university ? 
             <div>
-              <h1>{JSON.parse(university).name}</h1>
-              <h1>{JSON.parse(university).initials}</h1>
-              <h1>{JSON.parse(university).SIAFI}</h1>
-              <h1>{JSON.parse(university).state}</h1>
+              <inst>{JSON.parse(university).name}</inst>
+              <inst>Sigla: {JSON.parse(university).initials}</inst>
+              <inst>Cód. SIAFI: {JSON.parse(university).SIAFI}</inst>
+              <inst>UF: {JSON.parse(university).state}</inst>
               { JSON.parse(university).data.map( info => (
                 <Collapsible trigger={info.year}>
                   <div className="content">
