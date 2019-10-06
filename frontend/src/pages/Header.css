@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
 .heading {
-    margin-top: 20px;
+  font-family: 'Nunito Sans', sans-serif;
     color: #fff;
     text-align: center;
 }
 
 .heading h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
   font-weight: 300;
   position: relative;
 }
@@ -13,7 +15,7 @@
 .heading h1:after {
   content: '';
   cursor: auto;
-  height: 2px;
+  height: 1px;
   width: 2rem;
   position: absolute;
   left: 50%;
