@@ -160,8 +160,6 @@ module.exports = {
 			'../data/resultado_igc_2017.csv',
 		];
 
-// path.split('_')[2].split('.')[0],
-
 		var ret = [];
 		for (const [idx, path] of paths.entries()) {
 			console.log(path);
@@ -172,14 +170,14 @@ module.exports = {
 		}
 
 		console.log('escrevendo no arquivo');
-		fs.writeFile('../data/expenses2.json', JSON.stringify(ret), 'utf8', (err) => {
+		fs.writeFile('../data/expenses.json', JSON.stringify(ret), 'utf8', (err) => {
 			if (err) throw err;
 		});
 
 		return res.json(ret);
 	},
 	async store(req, res) {
-		const orgs = JSON.parse(fs.readFileSync('../data/expenses2.json','utf8'));
+		const orgs = JSON.parse(fs.readFileSync('../data/expenses.json','utf8'));
 		var ret;
 		for (var org in orgs) {
 			try {

@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
-// VIEWS
 import Header from './Header';
-// STYLES
+import SearchInput from './Search';
+import List from './List';
+
 import './Main.css';
-// SERVICE
 import api from '../services/api';
 
 const ENTER_KEY = 13;
 const SPACE_KEY = 32;
 
-export default function Main ({ history }) {
+export default function Main (props) {
   const [orgs, setOrgs] = useState();
   const [searchFilter, setSearchFilter] = useState();
 
   function handleClick(orgId) {
-    history.push(`/university/${orgId}`);
+    props.history.push(`/university/${orgId}`);
   }
 
-  function onChangeHandler(e) {
+  function handleChange(e) {
     if (e.keyCode !== SPACE_KEY)
       setSearchFilter(e.target.value);
   }
   
-  function onKeyDownHandler(e) {
+  function handleKeyDown(e) {
     if (e.keyCode === ENTER_KEY)
       setSearchFilter(e.target.value);
   }
@@ -34,39 +34,30 @@ export default function Main ({ history }) {
           name: searchFilter
         }
       });
-      setOrgs(response.data.map( org => {
-        return (
-          <div className="num" onClick={ () => handleClick(org._id) }>
-              <h3>{org.name}</h3>
-          </div>)
-      }));
+      setOrgs(response.data);
     }
     loadOrgs();
   }, [searchFilter]);
 
   return(
-    <div>
+    <>
       <div className="heading">
         <Header />
       </div>
       <div className="container">
         <div className="nav">
           <a href="https://github.com/mtsdalmolin/UniProjeta" rel="noopener" ><i className="fab fa-github"></i></a>
-            <div className="input-group">
-              <input 
-                className="search" 
-                type="text" 
-                placeholder="Digite o nome da Universidade"
-                onChange={ e => onChangeHandler(e) }
-                onKeyDown={ e => onKeyDownHandler(e) }
-              />
-              <span className="bar"></span>
-            </div> 
-          </div>
-        <div className="list">
-          {orgs}
+          <SearchInput 
+            onChange={ handleChange }
+            onKeyDown={ handleKeyDown }
+          /> 
         </div>
+        <List 
+          history={ props.history }
+          handleClick={ handleClick }
+          list={ orgs }
+        />
       </div>
-    </div>
+    </>
   );
 }

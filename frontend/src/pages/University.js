@@ -17,13 +17,14 @@ export default function University ({ match }) {
 
     loadUniversity();
   }, [match.params.id]);
+
   function applyExpenseMask(number) {
     number = number.replace('.', ',');
     return number.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
   return (
-    <div>
+    <>
       <div className="heading">
         <Header />
       </div>
@@ -71,6 +72,6 @@ export default function University ({ match }) {
           : '' }
         </div>
       </div>
-    </div>
+    </>
   );
 }

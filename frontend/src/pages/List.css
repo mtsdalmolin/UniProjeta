@@ -1,0 +1,42 @@
+/* LIST */
+.list .num {
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: 0.25s;
+}
+.list .num:before {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.list .num span {
+  position: relative;
+  left: -1.5rem;
+  color: #3d3d3d;
+  font-size: 1.5rem;
+  transition: 0.25s;
+}
+.list .num:hover {
+  background-color: #cecfd3;
+  cursor: pointer;
+}
+.list .num:hover:before {
+  opacity: 0.2;
+}
+.list .num:hover span {
+  left: 1rem;
+}
+.message {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+.university {
+  font-size: 25px;
+}
