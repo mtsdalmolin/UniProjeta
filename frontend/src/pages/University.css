@@ -83,34 +83,22 @@ inst{
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  font-size: 20px;
+  font-size: 19px;
   height: auto;
   width: 300px;
-  background-color: rgba(255, 255, 255, 0.904);
+  background-color: rgba(255, 255, 255, 0.856);
   color: #000;
   text-align: center;
   border-radius: 6px;
   border-style: dashed;
-  border-color: #204d90;
+  border-color: #e2771f;
   padding: 5px;
   position: absolute;
   z-index: 1;
   bottom: 20%;
   left: 150px;
   margin-left: -60px;
-  transition: opacity 0.3s;
   overflow: hidden;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: relative;
-  top: 100%;
-  left: 100%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
