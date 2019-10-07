@@ -5,10 +5,10 @@ import './Header.css'
 
 export default function Header () {
   return(
-		<Link to="/">
-    	<div className="heading">
-	      <h1>UniProjeta</h1>
-    	</div>
-	  </Link>
+    <Link to="/">
+      <div className="heading">
+        <h1>UniProjeta</h1>
+      </div>
+    </Link>
   );
 }

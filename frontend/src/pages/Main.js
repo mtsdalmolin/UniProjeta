@@ -41,9 +41,7 @@ export default function Main (props) {
 
   return(
     <>
-      <div className="heading">
-        <Header />
-      </div>
+      <Header />
       <div className="container">
         <div className="nav">
           <a href="https://github.com/mtsdalmolin/UniProjeta" rel="noopener" ><i className="fab fa-github"></i></a>

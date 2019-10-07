@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default function SearchInput(props) {
-	return (
-		<div className="input-group">
+  return (
+    <div className="input-group">
       <input 
         className="search" 
         type="text" 
