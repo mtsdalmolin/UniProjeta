@@ -1,0 +1,19 @@
+{
+  "name": "uniprojeta",
+  "version": "1.0.0",
+  "description": "Repositório destinado à disciplina de Projeto de Software II",
+  "main": "index.js",
+  "scripts": {
+    "backend": "node ./backend/src/server.js",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtsdalmolin/UniProjeta.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtsdalmolin/UniProjeta/issues"
+  },
+  "homepage": "https://github.com/mtsdalmolin/UniProjeta#readme"
+}
