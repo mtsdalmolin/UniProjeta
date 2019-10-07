@@ -1,7 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+inst{
+  font-family: 'Nunito Sans', sans-serif;
+  display: flex;
+  color: #000;
+  font-size: 25px;
+  width: 100%;
+  height: 100%;
+  border-width: 2px;
+  padding: 7px;
+  color: #000;
+  /*
+  display: -webkit-flex;  
+  -webkit-align-items: center; 
+  align-items: center; 
+  -webkit-justify-content: center; 
+  justify-content: center;
+  */
+  -webkit-font-smoothing: antialiased;
+
+}
+
 .Collapsible {
+  font-family: 'Nunito Sans', sans-serif;
   background-color: #204d90;
-  color: #eef;
-  font-weight: bold;
+  color: #fff;
   padding: 18px;
   width: 100%;
   height: 100%;
@@ -21,12 +43,13 @@
 }
 
 .info {
-	padding: 15px;
+	padding: 10px;
 	display: block;
 }
 
 .money:before {
-	content: 'R$ ';
+  content: 'R$ ';
+  color: rgb(15, 119, 32)
 }
 
 .info-label {
@@ -35,17 +58,15 @@
 
 .expenses-div,
 .igc-div {
-	width: 50%;
 	border-left: 6px solid #204d90;
-	background-color: #eef;
 	padding: 10px;
-	margin: 5px;
+  margin: 5px;
 }
 
 .content {
 	text-align: left;
   color: #fff;
-  font-size: 25px;
+  font-size: 23px;
   width: 100%;
   height: 100%;
   background-color: #fff;
@@ -53,4 +74,34 @@
   padding: 8px;
   color: #000;
   display: inline-flex;
+}
+
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  font-size: 19px;
+  height: auto;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.856);
+  color: #000;
+  text-align: center;
+  border-radius: 6px;
+  border-style: dashed;
+  border-color: #e2771f;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 20%;
+  left: 150px;
+  margin-left: -60px;
+  overflow: hidden;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

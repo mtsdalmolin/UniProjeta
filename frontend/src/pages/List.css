@@ -22,7 +22,7 @@
   transition: 0.25s;
 }
 .list .num:hover {
-  background-color: #cecfd3;
+  background-color: #204d9079;
   cursor: pointer;
 }
 .list .num:hover:before {

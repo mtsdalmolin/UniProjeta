@@ -32,25 +32,31 @@ export default function University ({ match }) {
         <div>
           { university ? 
             <div>
-              <h1>{JSON.parse(university).name}</h1>
-              <h1>{JSON.parse(university).initials}</h1>
-              <h1>{JSON.parse(university).SIAFI}</h1>
-              <h1>{JSON.parse(university).state}</h1>
+              <inst>{JSON.parse(university).name}</inst>
+              <inst>Sigla: {JSON.parse(university).initials}</inst>
+              <inst>Cód. SIAFI: {JSON.parse(university).SIAFI}</inst>
+              <inst>UF: {JSON.parse(university).state}</inst>
               { JSON.parse(university).data.map( info => (
                 <Collapsible trigger={info.year}>
                   <div className="content">
                     <div className="expenses-div">
                       <span>Despesas</span>
                       <div className="info">
-                        <span className="info-label">Empenhado:</span>
+                        <span className="info-label tooltip">Empenhado:
+                              <span class="tooltiptext">Valor empenhado é o valor que o Estado reservou para efetuar pagamentos planejados.</span>
+                        </span>
                         <span className="info-value money">{applyExpenseMask(info.expenses.committed.toString())}</span>
                       </div>
                       <div className="info">
-                        <span className="info-label">Liquidado:</span>
+                        <span className="info-label tooltip">Liquidado:
+                              <span class="tooltiptext">Valor liquidado é  valor reservado para quem prestou o serviço a instituição.</span>
+                        </span>
                         <span className="info-value money">{applyExpenseMask(info.expenses.settled.toString())}</span>
                       </div>
                       <div className="info">
-                        <span className="info-label">Pago:</span>
+                        <span className="info-label tooltip">Pago:
+                              <span class="tooltiptext">Valor pago é o valor já repassado aos prestadores de serviço.</span>
+                        </span>
                         <span className="info-value money">{applyExpenseMask(info.expenses.paid.toString())}</span>
                       </div>
                     </div>
