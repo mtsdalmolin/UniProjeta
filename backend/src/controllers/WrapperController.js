@@ -53,7 +53,7 @@ function getXLSX(file_path) {
 }
 
 function getSIAFI(ies_name) {
-	const sheet = getXLSX("../data/cod_siafi.csv");
+	const sheet = getXLSX("./data/cod_siafi.csv");
 
 	const header = sheet[0];
 	sheet.shift();
@@ -154,10 +154,10 @@ module.exports = {
 	async index(req, res) {
 
 		paths = [
-			'../data/resultado_igc_2014.csv',
-			'../data/resultado_igc_2015.csv',
-			'../data/resultado_igc_2016.csv',
-			'../data/resultado_igc_2017.csv',
+			'./data/resultado_igc_2014.csv',
+			'./data/resultado_igc_2015.csv',
+			'./data/resultado_igc_2016.csv',
+			'./data/resultado_igc_2017.csv',
 		];
 
 		var ret = [];
@@ -170,14 +170,14 @@ module.exports = {
 		}
 
 		console.log('escrevendo no arquivo');
-		fs.writeFile('../data/expenses.json', JSON.stringify(ret), 'utf8', (err) => {
+		fs.writeFile('./data/expenses.json', JSON.stringify(ret), 'utf8', (err) => {
 			if (err) throw err;
 		});
 
 		return res.json(ret);
 	},
 	async store(req, res) {
-		const orgs = JSON.parse(fs.readFileSync('../data/expenses.json','utf8'));
+		const orgs = JSON.parse(fs.readFileSync('./data/expenses.json','utf8'));
 		var ret;
 		for (var org in orgs) {
 			try {
