@@ -42,15 +42,21 @@ export default function University ({ match }) {
                     <div className="expenses-div">
                       <span>Despesas</span>
                       <div className="info">
-                        <span className="info-label">Empenhado:</span>
+                        <span className="info-label tooltip">Empenhado:
+                              <span class="tooltiptext">Valor empenhado é o valor que o Estado reservou para efetuar pagamentos planejados.</span>
+                        </span>
                         <span className="info-value money">{applyExpenseMask(info.expenses.committed.toString())}</span>
                       </div>
                       <div className="info">
-                        <span className="info-label">Liquidado:</span>
+                        <span className="info-label tooltip">Liquidado:
+                              <span class="tooltiptext">Valor liquidado é  valor reservado para quem prestou o serviço a instituição.</span>
+                        </span>
                         <span className="info-value money">{applyExpenseMask(info.expenses.settled.toString())}</span>
                       </div>
                       <div className="info">
-                        <span className="info-label">Pago:</span>
+                        <span className="info-label tooltip">Pago:
+                              <span class="tooltiptext">Valor pago é o valor já repassado aos prestadores de serviço.</span>
+                        </span>
                         <span className="info-value money">{applyExpenseMask(info.expenses.paid.toString())}</span>
                       </div>
                     </div>
