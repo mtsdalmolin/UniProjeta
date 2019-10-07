@@ -6,13 +6,13 @@ const cors = require('cors');
 
 const server = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/UniProjeta', {
-	useNewUrlParser: true
-});
-
-// mongoose.connect('mongodb+srv://matheus:@cluster0-f1deu.mongodb.net/admin?retryWrites=true&w=majority', {
+// mongoose.connect('mongodb://127.0.0.1:27017/UniProjeta', {
 // 	useNewUrlParser: true
 // });
+
+mongoose.connect('mongodb+srv://matheus:matheus@cluster0-f1deu.mongodb.net/UniProjeta?retryWrites=true&w=majority', {
+	useNewUrlParser: true
+});
 
 server.use(express.static(path.join(__dirname, '..', 'build')));
 
