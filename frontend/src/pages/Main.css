@@ -129,3 +129,14 @@
   right: 0;
   top: 5px;
 }
+
+.logo {
+  max-width: 50px;
+  height: auto;
+  text-align: center;
+  padding: 5px;
+/*  position: relative;
+  top: 3px;
+  left: 3px;*/
+  display: flex;
+}

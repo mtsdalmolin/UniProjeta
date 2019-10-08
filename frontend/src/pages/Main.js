@@ -6,6 +6,8 @@ import List from './List';
 import './Main.css';
 import api from '../services/api';
 
+import gitLogo from '../assets/gitLogo.svg';
+
 const ENTER_KEY = 13;
 const SPACE_KEY = 32;
 
@@ -44,7 +46,9 @@ export default function Main (props) {
       <Header />
       <div className="container">
         <div className="nav">
-          <a href="https://github.com/mtsdalmolin/UniProjeta" rel="noopener" ><i className="fab fa-github"></i></a>
+          <a href="https://github.com/mtsdalmolin/UniProjeta">
+            <img src={ gitLogo } alt="GitHub" class="logo" title="Repositório da aplicação" />
+          </a>
           <SearchInput 
             onChange={ handleChange }
             onKeyDown={ handleKeyDown }
