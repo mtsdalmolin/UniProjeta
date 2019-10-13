@@ -1,6 +1,5 @@
 .container {
   background-color: #fff;
-  padding: 2rem;
   box-shadow: 1px 10px 18px rgba(34, 34, 34, 0.9);
 }
 .container .nav {
@@ -8,8 +7,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  margin: 0 -3rem 2rem;
   box-shadow: 2px 10px 10px rgba(32, 32, 32, 0.9);
   position: relative;
 }
