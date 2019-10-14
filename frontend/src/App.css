@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 * {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: 0;
 }
 
 html,
@@ -26,4 +28,5 @@ html {
   align-items: center;
   justify-content: center;
   background: #204c90;
+  margin: 0;
 }

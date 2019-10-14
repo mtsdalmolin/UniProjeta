@@ -36,6 +36,7 @@ inst {
 .Collapsible__trigger.is-open:hover,
 .Collapsible__trigger.is-closed:hover{
   cursor: pointer;
+  overflow: scroll;
 }
 
 .Collapsible__contentOuter {
