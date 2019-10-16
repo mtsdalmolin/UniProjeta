@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.17872f59.chunk.css",
-    "main.js": "/static/js/main.db34d1a0.chunk.js",
-    "main.js.map": "/static/js/main.db34d1a0.chunk.js.map",
+    "main.css": "/static/css/main.f2e3cd13.chunk.css",
+    "main.js": "/static/js/main.a4701ffd.chunk.js",
+    "main.js.map": "/static/js/main.a4701ffd.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.821e3928.js",
     "runtime~main.js.map": "/static/js/runtime~main.821e3928.js.map",
     "static/js/2.509237f7.chunk.js": "/static/js/2.509237f7.chunk.js",
     "static/js/2.509237f7.chunk.js.map": "/static/js/2.509237f7.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.33ce4c1f58c4fb3f4b8f4ebcb6c94f3d.js": "/precache-manifest.33ce4c1f58c4fb3f4b8f4ebcb6c94f3d.js",
+    "precache-manifest.2173dd1040996c21fc5b61f06c7b1495.js": "/precache-manifest.2173dd1040996c21fc5b61f06c7b1495.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.17872f59.chunk.css.map": "/static/css/main.17872f59.chunk.css.map",
-    "static/media/gitLogo.svg": "/static/media/gitLogo.76d344f0.svg"
+    "static/css/main.f2e3cd13.chunk.css.map": "/static/css/main.f2e3cd13.chunk.css.map",
+    "static/media/gitLogo.svg": "/static/media/gitLogo.86016cab.svg"
   }
 }
