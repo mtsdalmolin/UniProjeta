@@ -6,12 +6,77 @@ import './University.css';
 
 import api from '../services/api';
 
+import CanvasJSReact from '../assets/canvasjs.react';
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 export default function University ({ match }) {
   const [university, setUniversity] = useState();
+  const [chartOptions, setChartOptions] = useState();
 
   useEffect(() => {
+    let predDataPoints = [];
+    let actualDataPoints = [];
     async function loadUniversity() {
-      const response = await api.get(`/orgs/${match.params.id}/dashboard`);
+      const response = await api.get(`/orgs/${ match.params.id }/dashboard`);
+      const p_data = await api.get(`${ match.params.id }/predictions`);
+      
+      response.data.data.map( (info, index) => {
+        info.predicted_igc = p_data.data[index].predicted_data.predicted_igc;
+
+        predDataPoints.push({
+          x: new Date(info.year.toString()),
+          y: info.predicted_igc
+        });
+
+        actualDataPoints.push({
+          x: new Date(info.year.toString()),
+          y: info.igc_cont_value
+        });
+      });
+
+      setChartOptions({
+        theme: "light2",
+        animationEnabled: true,
+        title:{
+          text: "Valores atual e previsto do IGC"
+        },
+        axisX: {
+          title: "Ano"
+        },
+        axisY: {
+          title: "Atual",
+          titleFontColor: "#6D78AD",
+          lineColor: "#6D78AD",
+          labelFontColor: "#6D78AD",
+          tickColor: "#6D78AD",
+          includeZero: false
+        },
+        axisY2: {
+          title: "Previsto",
+          titleFontColor: "#51CDA0",
+          lineColor: "#51CDA0",
+          labelFontColor: "#51CDA0",
+          tickColor: "#51CDA0",
+          includeZero: false
+        },
+        toolTip: {
+          shared: true
+        },
+        data: [{
+          type: "spline",
+          name: "Atual",
+          showInLegend: true,
+          dataPoints: actualDataPoints
+        },
+        {
+          type: "spline",
+          name: "Previsto",
+          axisYType: "secondary",
+          showInLegend: true,
+          dataPoints: predDataPoints
+        }]
+      });
+
       setUniversity(JSON.stringify(response.data));
     }
 
@@ -32,43 +97,66 @@ export default function University ({ match }) {
         <div>
           { university ? 
             <div>
-              <inst>{JSON.parse(university).name}</inst>
-              <inst>Sigla: {JSON.parse(university).initials}</inst>
-              <inst>Cód. SIAFI: {JSON.parse(university).SIAFI}</inst>
-              <inst>UF: {JSON.parse(university).state}</inst>
+              <span className="university-info">{JSON.parse(university).name}</span>
+              <div className="info-under">
+                <span className="university-info">Sigla: {JSON.parse(university).initials}</span>
+                <span className="university-info">Cód. SIAFI: {JSON.parse(university).SIAFI}</span>
+                <span className="university-info">UF: {JSON.parse(university).state}</span>
+              </div>
+              <CanvasJSChart options = {chartOptions}/>
+
               { JSON.parse(university).data.map( info => (
-                <Collapsible trigger={info.year}>
+                <Collapsible key={info.year} trigger={info.year}>
                   <div className="content">
                     <div className="expenses-div">
                       <span>Despesas</span>
                       <div className="info">
                         <span className="info-label tooltip">Empenhado:
-                              <span class="tooltiptext">Valor empenhado é o valor que o Estado reservou para efetuar pagamentos planejados.</span>
+                              <span className="tooltiptext">Valor que o estado reservou para efetuar pagamentos planejados.</span>
                         </span>
                         <span className="info-value money">{applyExpenseMask(info.expenses.committed.toString())}</span>
                       </div>
                       <div className="info">
                         <span className="info-label tooltip">Liquidado:
-                              <span class="tooltiptext">Valor liquidado é  valor reservado para quem prestou o serviço a instituição.</span>
+                              <span className="tooltiptext">Valor reservado para quem prestou o serviço à instituição.</span>
                         </span>
                         <span className="info-value money">{applyExpenseMask(info.expenses.settled.toString())}</span>
                       </div>
                       <div className="info">
                         <span className="info-label tooltip">Pago:
-                              <span class="tooltiptext">Valor pago é o valor já repassado aos prestadores de serviço.</span>
+                              <span className="tooltiptext">Valor já repassado aos prestadores de serviço.</span>
                         </span>
                         <span className="info-value money">{applyExpenseMask(info.expenses.paid.toString())}</span>
                       </div>
                     </div>
                     <div className="igc-div">
-                      <span>IGC</span>
+                      <span>IGC (Atual)</span>
                       <div className="info">
                         <span className="info-label">Contínuo:</span>
-                        <span className="info-value">{info.igc_cont_value.toString().replace('.', ',')}</span>
+                        <span className="info-value">
+                          { info.igc_cont_value ? info.igc_cont_value.toString().replace('.', ',') : 'Valor ainda não definido' }
+                        </span>
                       </div>
                       <div className="info">
                         <span className="info-label">Discreto:</span>
-                        <span className="info-value">{info.igc_value}</span>
+                        <span className="info-value">
+                          { info.igc_value ? info.igc_value : 'Valor ainda não definido' }
+                        </span>
+                      </div>
+                    </div>
+                    <div className="igc-div">
+                      <span>IGC (Previsto)</span>
+                      <div className="info">
+                        <span className="info-label">Contínuo:</span>
+                        <span className="info-value">
+                          { info.predicted_igc.toString().replace('.', ',')}
+                        </span>
+                      </div>
+                      <div className="info">
+                        <span className="info-label">Discreto:</span>
+                        <span className="info-value">
+                          { info.igc_value ? info.igc_value : 'Valor ainda não definido' }
+                        </span>
                       </div>
                     </div>
                   </div>

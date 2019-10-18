@@ -42,7 +42,6 @@ async function getExpenses(orgs, ret) {
 		});
 		console.log(ret[org]);
 	}
-		// console.log(orgs);
 
 	return ret;
 }
@@ -62,10 +61,10 @@ function getSIAFI(ies_name) {
 		var ies = sheet[line];
 		for (field in header) {
 			if (header[field] === 'Órgão UGE Nome') {
-
 				if (ies[field].includes(ies_name)) {
 					var siafi = ies[0];
-					// console.log(ies[field] + ` - ` + ies_name + ` - ` + ies[0]);
+				console.log(ies[field]);
+				console.log(siafi);
 					break;
 				}
 			}
@@ -98,7 +97,6 @@ async function getXLSX_IES(path) {
 			json[line] = {};
 			let i = 0;
 			for (field in header) {
-				var value = header[field];
 				json[line][i] = ies[field];
 				i++;
 			}
@@ -115,6 +113,29 @@ async function getXLSX_IES(path) {
 		}
 
 	return orgs;
+}
+
+async function getFutureExpenses(orgs, ret) {
+	let years = [2018, 2019];
+	for(var org in orgs) {
+		for (var year in years) {
+			ret[org] = await axios.get(`http://www.transparencia.gov.br/api-de-dados/despesas/por-orgao?ano=${years[year]}&orgao=${orgs[org][7]}`)
+			.then( ({ data }) => {
+				obj = {};
+				obj.year = years[year];
+				obj.igc_value = null;
+				obj.igc_cont_value = null;
+				expenses = {};
+				expenses.committed = data[0].empenhado.replace(/\./g, '').replace(',', '.');
+				expenses.settled = data[0].liquidado.replace(/\./g, '').replace(',', '.');
+				expenses.paid = data[0].pago.replace(/\./g, '').replace(',', '.');
+				obj.expenses = expenses;
+				ret[org]['data'].push(obj);
+				return ret[org];
+			});
+		}
+	}
+	return ret;
 }
 
 // function getXLSX_Course(ies_initials, digit_year) {
@@ -162,22 +183,26 @@ module.exports = {
 
 		var ret = [];
 		for (const [idx, path] of paths.entries()) {
-			console.log(path);
+			console.log(`Getting values from ${path}`);
 			orgs = await getXLSX_IES(path);
-			// colocar a parte das despesas...
 			ret = await getExpenses(orgs, ret);
-			console.log(ret);	
 		}
+		
+		console.log('Getting future expenses');
+		ret = await getFutureExpenses(orgs, ret);
 
-		console.log('escrevendo no arquivo');
-		fs.writeFile('./data/expenses.json', JSON.stringify(ret), 'utf8', (err) => {
-			if (err) throw err;
+		console.log('Writing data into JSON file...');
+		fs.writeFile('./data/expenses2.json', JSON.stringify(ret), 'utf8', (err) => {
+			if (err) 
+				throw err;
+			else
+				console.log('Done writing info into JSON file!');
 		});
 
 		return res.json(ret);
 	},
 	async store(req, res) {
-		const orgs = JSON.parse(fs.readFileSync('./data/expenses.json','utf8'));
+		const orgs = JSON.parse(fs.readFileSync('./data/expenses2.json','utf8'));
 		var ret;
 		for (var org in orgs) {
 			try {

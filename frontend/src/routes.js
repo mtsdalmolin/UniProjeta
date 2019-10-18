@@ -8,7 +8,7 @@ export default function Routes() {
   return (
     <Router>
     	<Route path="/" exact component={ Main } />
-    	<Route path="/university/:id" component={ University }/>
+    	<Route path="/university/:id" component={ University } />
     </Router>
   );
 }

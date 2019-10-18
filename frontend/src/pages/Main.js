@@ -47,7 +47,7 @@ export default function Main (props) {
       <div className="container">
         <div className="nav">
           <a href="https://github.com/mtsdalmolin/UniProjeta">
-            <img src={ gitLogo } alt="GitHub" class="logo" title="Repositório da aplicação" />
+            <img src={ gitLogo } alt="GitHub" className="logo" title="Repositório da aplicação" />
           </a>
           <SearchInput 
             onChange={ handleChange }

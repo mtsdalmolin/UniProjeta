@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const Prediction = require('./Prediction');
 
 const OrgSchema = new Schema({
 	name: {
@@ -39,6 +40,10 @@ const OrgSchema = new Schema({
 			},
 		}
 	}],
+	predicted_data: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Prediction'
+	}]
 }, {
 	timestamps: true,
 });
