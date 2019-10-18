@@ -11,13 +11,14 @@ html,
 body,
 #root{
   height: 100%;
+  width: 90%; 
+  margin: 0 auto;
 }
 
 body{
   font-size: 14px;
   color: #000;
   -webkit-font-smoothing: antialiased !important;
-  margin: 0;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,6 +27,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   background: #204c90;
+  margin: 0;
 }
