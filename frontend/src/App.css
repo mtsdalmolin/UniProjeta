@@ -11,7 +11,7 @@ html,
 body,
 #root{
   height: 100%;
-  width: 100%; 
+  min-width: 900px; 
   margin: 0 auto;
 }
 
@@ -29,4 +29,10 @@ html {
   justify-content: center;
   background: #204c90;
   margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+  html, body, #root {
+    min-width: 300px;
+  }
 }
