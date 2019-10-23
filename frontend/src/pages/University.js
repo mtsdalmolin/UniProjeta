@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Collapsible from 'react-collapsible';
-
+import Loader from './Loader';
 import Header from './Header';
 import './University.css';
 
@@ -49,7 +49,9 @@ export default function University ({ match }) {
           lineColor: "#6D78AD",
           labelFontColor: "#6D78AD",
           tickColor: "#6D78AD",
-          includeZero: false
+          includeZero: false,
+          maximum: 5,
+          minimum: 0
         },
         axisY2: {
           title: "Previsto",
@@ -57,7 +59,9 @@ export default function University ({ match }) {
           lineColor: "#51CDA0",
           labelFontColor: "#51CDA0",
           tickColor: "#51CDA0",
-          includeZero: false
+          includeZero: false,
+          maximum: 5,
+          minimum: 0
         },
         toolTip: {
           shared: true
@@ -88,6 +92,28 @@ export default function University ({ match }) {
     return number.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
+  function discreteIGC(value) {
+    let v = 0;
+    switch(true) {
+      case (value < 0.945):
+        v = 1;
+        break;
+      case (value >= 0.945 && value < 1.945):
+        v = 2;
+        break;
+      case (value >= 1.945 && value < 2.945):
+        v = 3;
+        break;
+      case (value >= 2.945 && value < 3.945):
+        v = 4;
+        break;
+      case (value >= 3.945 && value <= 5):
+        v = 5;
+        break;
+    }
+    return v;
+  }
+
   return (
     <>
       <div className="heading">
@@ -104,7 +130,6 @@ export default function University ({ match }) {
                 <span className="university-info">UF: {JSON.parse(university).state}</span>
               </div>
               <CanvasJSChart options = {chartOptions}/>
-
               { JSON.parse(university).data.map( info => (
                 <Collapsible key={info.year} trigger={info.year}>
                   <div className="content">
@@ -114,19 +139,19 @@ export default function University ({ match }) {
                         <span className="info-label tooltip">Empenhado:
                               <span className="tooltiptext">Valor que o estado reservou para efetuar pagamentos planejados.</span>
                         </span>
-                        <span className="info-value money">{applyExpenseMask(info.expenses.committed.toString())}</span>
+                        <span className="info-value money">{ applyExpenseMask(info.expenses.committed.toString()) }</span>
                       </div>
                       <div className="info">
                         <span className="info-label tooltip">Liquidado:
                               <span className="tooltiptext">Valor reservado para quem prestou o serviço à instituição.</span>
                         </span>
-                        <span className="info-value money">{applyExpenseMask(info.expenses.settled.toString())}</span>
+                        <span className="info-value money">{ applyExpenseMask(info.expenses.settled.toString()) }</span>
                       </div>
                       <div className="info">
                         <span className="info-label tooltip">Pago:
                               <span className="tooltiptext">Valor já repassado aos prestadores de serviço.</span>
                         </span>
-                        <span className="info-value money">{applyExpenseMask(info.expenses.paid.toString())}</span>
+                        <span className="info-value money">{ applyExpenseMask(info.expenses.paid.toString()) }</span>
                       </div>
                     </div>
                     <div className="igc-div">
@@ -155,7 +180,7 @@ export default function University ({ match }) {
                       <div className="info">
                         <span className="info-label">Discreto:</span>
                         <span className="info-value">
-                          { info.igc_value ? info.igc_value : 'Valor ainda não definido' }
+                          { discreteIGC(info.predicted_igc) }
                         </span>
                       </div>
                     </div>
@@ -163,7 +188,7 @@ export default function University ({ match }) {
                 </Collapsible>
               )) }
             </div>
-          : '' }
+          : <Loader /> }
         </div>
       </div>
     </>

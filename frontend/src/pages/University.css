@@ -79,6 +79,13 @@ span.university-info {
   display: inline-flex;
 }
 
+@media screen and (max-width: 960px) {
+  .content {
+    display: block;
+    font-size: 95%;
+  }
+}
+
 .info-under {
   display: flex;
   text-align: center;

@@ -139,3 +139,7 @@
   left: 3px;*/
   display: flex;
 }
+
+.nav-item {
+  width: 50%;
+}

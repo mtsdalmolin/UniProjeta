@@ -46,10 +46,11 @@ export default function Main (props) {
       <Header />
       <div className="container">
         <div className="nav">
-          <a href="https://github.com/mtsdalmolin/UniProjeta">
+          <a className="nav-item" href="https://github.com/mtsdalmolin/UniProjeta">
             <img src={ gitLogo } alt="GitHub" className="logo" title="Repositório da aplicação" />
           </a>
           <SearchInput 
+            className="nav-item" 
             onChange={ handleChange }
             onKeyDown={ handleKeyDown }
           /> 

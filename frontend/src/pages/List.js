@@ -1,14 +1,15 @@
 import React from 'react';
+import Loader from './Loader';
 import './List.css';
 
 export default function List (props) {
   return(
     <div className="list">
-      {props.list ? props.list.map( org => (
+      { props.list ? props.list.map( org => (
           <div key={ org._id } className="num" onClick={ () => props.handleClick(org._id) }>
-              <span className="university">{org.name}</span>
-          </div>)
-      ) : ''}
+              <span className="university">{ org.name }</span>
+          </div>
+      )) : <Loader /> }
     </div>
   );
 }
