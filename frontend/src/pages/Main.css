@@ -39,7 +39,6 @@
 }
 .container .nav a {
   display: inline-block;
-  margin: 0 2rem;
   font-size: 2.3rem;
   color: #204c90;
   transition: 0.25s;

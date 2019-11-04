@@ -7,6 +7,7 @@ import './Main.css';
 import api from '../services/api';
 
 import gitLogo from '../assets/gitLogo.svg';
+import addLogo from '../assets/addLogo.svg'
 
 const ENTER_KEY = 13;
 const SPACE_KEY = 32;
@@ -46,6 +47,9 @@ export default function Main (props) {
       <Header />
       <div className="container">
         <div className="nav">
+          <a className="nav-item" href="https://github.com/mtsdalmolin/UniProjeta">
+            <img src={ addLogo } alt="Adcionar" className="logo" title="Adicionar IES" />
+          </a>
           <a className="nav-item" href="https://github.com/mtsdalmolin/UniProjeta">
             <img src={ gitLogo } alt="GitHub" className="logo" title="Repositório da aplicação" />
           </a>
