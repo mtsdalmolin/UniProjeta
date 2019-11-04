@@ -47,7 +47,9 @@ export default function Main (props) {
       <Header />
       <div className="container">
         <div className="nav">
-          <a className="nav-item" href="https://github.com/mtsdalmolin/UniProjeta">
+          <a className="nav-item" 
+            href={ props.history.push('/addform') }
+          >
             <img src={ addLogo } alt="Adcionar" className="logo" title="Adicionar IES" />
           </a>
           <a className="nav-item" href="https://github.com/mtsdalmolin/UniProjeta">
