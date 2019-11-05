@@ -10,7 +10,7 @@ export default function Routes() {
     <Router>
     	<Route path="/" exact component={ Main } />
     	<Route path="/university/:id" component={ University } />
-      <Route path="/addform" component={ AddForm }/>
+      <Route path="/addform/" component={ AddForm }/>
     </Router>
   );
-}
+} 
