@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
+input[type='text']{
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 1%;
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-weight: bold;
+    font-size: 110%;
+    border: 2px solid #204d90;
+    border-radius: 1px;
+}
+
+input[type='number']{
+    font-family: 'Nunito Sans', sans-serif;
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+    width: 50%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-weight: bold;
+    font-size: 110%;
+    border: 2px solid #204d90;
+    border-radius: 1px;
+}
+
