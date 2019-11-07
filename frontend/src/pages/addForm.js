@@ -1,14 +1,17 @@
 import React from 'react';
 import './Main.css';
 import './addForm.css';
-import './Header.css';
+import Header from './Header';
 
-export default function Header () {
+export default function AddForm () {
   return(
     <div>
-      
+      <div className="heading">
+        <Header />
+      </div>
       <div className="container">
-        <h1>Em construção..asdasda</h1>
+        <h1>Inserir IES</h1>
+        <h3>Para inserir uma IES, preencha os campos abaixo e clique no botão ...</h3>
         <form>
           
           <input type="text" name="nomeIES" placeholder="Digite o nome da IES"/>
@@ -19,6 +22,7 @@ export default function Header () {
           <input type="number" name="gastp" placeholder="Gasto"/>
           <input type="number" name="pago" placeholder="Pago"/>
         </form>
+        <h2>***Inserção disponível em breve...</h2>
       </div>
     </div>
   );
