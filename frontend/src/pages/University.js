@@ -12,6 +12,9 @@ const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 export default function University ({ match }) {
   const [university, setUniversity] = useState();
   const [chartOptions, setChartOptions] = useState();
+  const [maxValueY, setMaxValueY] = useState(5);
+  const [minValueY, setMinValueY] = useState(0);
+  const [values, setValues] = useState([]);
 
   useEffect(() => {
     let predDataPoints = [];
@@ -19,9 +22,12 @@ export default function University ({ match }) {
     async function loadUniversity() {
       const response = await api.get(`/orgs/${ match.params.id }/dashboard`);
       const p_data = await api.get(`${ match.params.id }/predictions`);
-      
+      let arrValues = [];
+
       response.data.data.map( (info, index) => {
         info.predicted_igc = p_data.data[index].predicted_data.predicted_igc;
+
+        arrValues.push(Math.round(info.predicted_igc));
 
         predDataPoints.push({
           x: new Date(info.year.toString()),
@@ -34,7 +40,9 @@ export default function University ({ match }) {
         });
       });
 
-      setChartOptions({
+      setValues(arrValues);
+
+      let options = {
         theme: "light2",
         animationEnabled: true,
         title:{
@@ -50,8 +58,8 @@ export default function University ({ match }) {
           labelFontColor: "#6D78AD",
           tickColor: "#6D78AD",
           includeZero: false,
-          maximum: 5,
-          minimum: 0
+          maximum: maxValueY,
+          minimum: minValueY
         },
         axisY2: {
           title: "Previsto",
@@ -60,8 +68,8 @@ export default function University ({ match }) {
           labelFontColor: "#51CDA0",
           tickColor: "#51CDA0",
           includeZero: false,
-          maximum: 5,
-          minimum: 0
+          maximum: maxValueY,
+          minimum: minValueY
         },
         toolTip: {
           shared: true
@@ -79,13 +87,15 @@ export default function University ({ match }) {
           showInLegend: true,
           dataPoints: predDataPoints
         }]
-      });
+      };
+
+      setChartOptions(options);
 
       setUniversity(JSON.stringify(response.data));
     }
 
     loadUniversity();
-  }, [match.params.id]);
+  }, [match.params.id, minValueY, maxValueY]);
 
   function applyExpenseMask(number) {
     number = number.replace('.', ',');
@@ -114,6 +124,20 @@ export default function University ({ match }) {
     return v;
   }
 
+  function handleZoom(type) {
+    let max = values.reduce( (a, b) => {
+      return Math.max(a, b);
+    });
+
+    if (type === 'In') {
+      setMinValueY(max - 0.7);
+      setMaxValueY(max + 0.7);
+    } else {
+      setMinValueY(0);
+      setMaxValueY(5);
+    }
+  }
+
   return (
     <>
       <div className="heading">
@@ -123,11 +147,15 @@ export default function University ({ match }) {
         <div>
           { university ? 
             <div>
-              <span className="university-info">{JSON.parse(university).name}</span>
+              <span className="university-info">{ JSON.parse(university).name }</span>
               <div className="info-under">
-                <span className="university-info">Sigla: {JSON.parse(university).initials}</span>
-                <span className="university-info">Cód. SIAFI: {JSON.parse(university).SIAFI}</span>
-                <span className="university-info">UF: {JSON.parse(university).state}</span>
+                <span className="university-info">Sigla: { JSON.parse(university).initials }</span>
+                <span className="university-info">Cód. SIAFI: { JSON.parse(university).SIAFI }</span>
+                <span className="university-info">UF: { JSON.parse(university).state }</span>
+              </div>
+              <div className="div-btn-zoom">
+                <button className="btn-zoom" type="button" onClick={ () => handleZoom('In') }>+</button>
+                <button className="btn-zoom" onClick={ () => handleZoom('Out') }>-</button>
               </div>
               <CanvasJSChart options = {chartOptions}/>
               { JSON.parse(university).data.map( info => (

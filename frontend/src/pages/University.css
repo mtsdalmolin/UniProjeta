@@ -84,6 +84,11 @@ span.university-info {
     display: block;
     font-size: 95%;
   }
+
+  .btn-zoom {
+    position: absolute;
+    right: -50%;
+  }
 }
 
 .info-under {
@@ -118,4 +123,20 @@ span.university-info {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.div-btn-zoom {
+  margin: 15px 0;
+}
+
+.btn-zoom {
+  position: relative;
+  right: -87.5%;
+  font-size: 150%;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-radius: 8px;
+  width: 50px;
+  margin: 0 10px;
 }
